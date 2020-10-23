@@ -72,7 +72,7 @@
 
       async function handleSubmit(e) {
         e.preventDefault();
-
+        output.innerHTML = '';
         const filecontents = await getContent();
         console.log('filecontents', filecontents);
         gear.classList.add('spinning');
@@ -87,8 +87,10 @@
           progress.textContent = "done!";
           if (error) {
             console.error(error, error.message);
+            output.innerHTML = error.message;
           } else {
             console.info('done correctly.');
+            output.innerHTML = 'done correctly.';
           }
         });
       }
